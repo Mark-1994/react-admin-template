@@ -3,6 +3,7 @@ import './home.css'
 import { getData } from '../../api'
 import React, { useEffect, useState } from 'react'
 import * as Icon from '@ant-design/icons'
+import CustomChart from '../../components/Echarts'
 
 const columns = [
   {
@@ -64,10 +65,48 @@ const iconToElement = (name) => React.createElement(Icon[name])
 const Home = () => {
   const userImg = require('../../assets/images/user.png')
   const [data, setData] = useState([])
+  const [echartData, setEchartData] = useState({})
   useEffect(() => {
     getData().then(res => {
-      const { tableData } = res.data
+      const { tableData, orderData, userData, videoData } = res.data
       setData(tableData)
+      const keyArray = Object.keys(orderData.data[0])
+      const series = keyArray.map(key => {
+        return {
+          name: key,
+          data: orderData.data.map(item => item[key]),
+          type: 'line'
+        }
+      })
+      setEchartData({
+        order: {
+          xAxisData: orderData.date,
+          series
+        },
+        user: {
+          xAxisData: userData.map(item => item.date),
+          series: [
+            {
+              name: '新增用户',
+              data: userData.map(item => item.new),
+              type: 'bar'
+            },
+            {
+              name: '活跃用户',
+              data: userData.map(item => item.active),
+              type: 'bar'
+            }
+          ]
+        },
+        video: {
+          series: [
+            {
+              data: videoData,
+              type: 'pie'
+            }
+          ]
+        },
+      })
     })
   }, [])
   return (
@@ -103,6 +142,11 @@ const Home = () => {
               </div>
             </Card>
           ))}
+        </div>
+        { echartData.order && <CustomChart chartData={echartData.order} style={{ height: '280px' }} /> }
+        <div className="graph">
+          { echartData.user && <CustomChart chartData={echartData.user} style={{ height: '240px', width: '50%' }} /> }
+          { echartData.video && <CustomChart chartData={echartData.video} isAxisChart={false} style={{ height: '240px', width: '50%' }} /> }
         </div>
       </Col>
     </Row>
