@@ -126,6 +126,8 @@ const data = {
         u.birth = birth
         u.sex = sex_num
         return true
+      } else {
+        return false
       }
     })
     return {
