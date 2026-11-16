@@ -1,6 +1,7 @@
 {
-  "name": "my-app",
+  "name": "react-admin-template",
   "version": "0.1.0",
+  "homepage": "https://mark-1994.github.io/react-admin-template",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.14.0",
