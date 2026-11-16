@@ -7,15 +7,20 @@ import { Layout, Button, Avatar, theme, Dropdown } from 'antd'
 import './index.css'
 import { useDispatch } from 'react-redux'
 import { toggleCollapse } from '../../store/reducers/tab'
+import { useNavigate } from 'react-router-dom'
 
 const { Header } = Layout;
 
 const CommonHeader = ({ collapsed }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {
     token: { colorBgContainer },
   } = theme.useToken()
-  const logout = () => {}
+  const logout = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
   const items = [
     {
       key: '1',
