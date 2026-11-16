@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# React Admin Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+基于 React 的后台管理系统模板，内置常见的后台布局、路由、状态管理、图表与 Mock 数据，开箱即用。
 
-## Available Scripts
+## 演示地址
 
-In the project directory, you can run:
+[https://mark-1994.github.io/react-admin-template](https://mark-1994.github.io/react-admin-template)
 
-### `npm start`
+## 技术栈
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| 类别 | 技术 |
+| --- | --- |
+| 核心框架 | [React](https://react.dev/) 19 |
+| 状态管理 | [Redux Toolkit](https://redux-toolkit.js.org/) |
+| 路由 | [React Router](https://reactrouter.com/) 7 |
+| UI 组件库 | [Ant Design](https://ant.design/index-cn) 6 |
+| 图表 | [ECharts](https://echarts.apache.org/zh/index.html) 6 |
+| 网络请求 | [Axios](https://axios-http.com/zh/docs/intro) |
+| 数据模拟 | [Mock.js](http://mockjs.com/) |
+| 工程化 | [Create React App](https://create-react-app.dev/) |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 项目结构
 
-### `npm test`
+```
+src/
+├── api/            # 接口请求封装
+├── assets/         # 静态资源
+├── components/     # 公共组件
+│   ├── commonAside/    # 侧边栏
+│   ├── commonHeader/   # 顶部导航
+│   ├── commonTag/      # 标签页导航
+│   └── Echarts/        # 图表组件
+├── config/         # 配置
+├── pages/          # 页面
+│   ├── home/       # 首页（数据看板）
+│   ├── login/      # 登录页
+│   ├── mall/       # 商城管理
+│   ├── user/       # 用户管理
+│   └── other/      # 其他页面
+├── router/         # 路由配置
+├── store/          # Redux 状态管理
+├── App.js
+└── index.js
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 快速开始
 
-### `npm run build`
+### 环境要求
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js >= 14
+- npm 或 yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 安装依赖
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### 启动开发服务
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+启动后访问 [http://localhost:3000](http://localhost:3000)。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 构建生产版本
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run build
+```
 
-## Learn More
+构建产物输出到 `build` 目录。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 运行测试
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm test
+```
 
-### Code Splitting
+## 功能特性
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- 经典后台布局：侧边菜单、顶部导航、标签页导航
+- 路由集中配置，支持动态菜单渲染
+- Redux Toolkit 管理全局状态（菜单折叠、标签列表等）
+- ECharts 数据图表展示
+- Mock.js 模拟接口数据，无需后端即可运行
+- 登录页、用户管理、商城管理等常见后台页面
 
-### Analyzing the Bundle Size
+## 部署
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+项目默认部署到 GitHub Pages（见 `package.json` 中的 `homepage` 字段）。如需部署到其他环境，请修改 `homepage` 并按需调整路由的 `basename`。
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://opensource.org/licenses/MIT)
